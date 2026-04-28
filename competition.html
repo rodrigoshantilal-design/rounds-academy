@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Equipa de Competi&#231;&#227;o da Rounds Academy &#8212; os nossos atletas em competi&#231;&#227;o.">
+  <title>Competi&#231;&#227;o &#8212; Rounds Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style-v9.css">
+  <style>
+    .comp-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .comp-gallery-grid .comp-item:first-child {
+      grid-column: span 2;
+      aspect-ratio: 16/9;
+    }
+    .comp-item {
+      aspect-ratio: 4/3;
+      border-radius: var(--r);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--dark-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--ease);
+    }
+    .comp-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .comp-item:hover {
+      border-color: var(--border-light);
+      transform: scale(1.01);
+    }
+    .comp-item--placeholder svg {
+      opacity: 0.2;
+    }
+    .comp-section-filters {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .comp-filter-btn {
+      font-family: var(--f-head);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: transparent;
+      color: var(--gray-500);
+      cursor: pointer;
+      transition: var(--ease);
+    }
+    .comp-filter-btn.active,
+    .comp-filter-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    @media (max-width: 640px) {
+      .comp-gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .comp-gallery-grid .comp-item:first-child { grid-column: span 2; aspect-ratio: 16/9; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><img src="images/simbolorounds.png" alt="Rounds Academy" class="site-logo-img"></a>
+      <ul class="nav-links">
+        <li><a href="index.html">In&#237;cio</a></li><li><a href="about.html">Sobre</a></li><li><a href="index.html#aulas">Aulas</a></li><li><a href="schedule.html">Hor&#225;rio</a></li><li><a href="competition.html" class="active">Competi&#231;&#227;o</a></li><li><a href="staff.html">Staff</a></li><li><a href="contact.html">Contacto</a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="lang-switch"><a href="competition.html" class="active">PT</a><span>|</span><a href="en/competition.html">EN</a></div>
+        <div class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">In&#237;cio</a><a href="about.html">Sobre</a><a href="index.html#aulas">Aulas</a><a href="schedule.html">Hor&#225;rio</a><a href="competition.html" class="active">Competi&#231;&#227;o</a><a href="staff.html">Staff</a><a href="contact.html">Contacto</a>
+    <div class="mobile-lang"><a href="competition.html" class="active">Portugu&#234;s</a><a href="en/competition.html">English</a></div>
+  </div>
+
+  <div class="page-hero"><div class="container"><div class="page-hero-content">
+    <div class="breadcrumb"><a href="index.html">In&#237;cio</a><span class="breadcrumb-sep">/</span><span>Competi&#231;&#227;o</span></div>
+    <span class="page-hero-title">COMPETI&#199;&#195;O</span>
+    <p class="page-hero-sub">A nossa equipa em competi&#231;&#227;o</p>
+  </div></div></div>
+
+  <section class="section"><div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Equipa de Competi&#231;&#227;o</span>
+      <h2 class="section-title">Os Nossos Atletas</h2>
+      <p class="section-subtitle">Momentos, vit&#243;rias e mem&#243;rias da equipa de competi&#231;&#227;o da Rounds Academy.</p>
+      <div class="gold-line"></div>
+    </div>
+
+    <div class="comp-gallery-grid reveal">
+      <div class="comp-item">
+        <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
+          <source src="videos/competition/comp-1.mov" type="video/mp4">
+        </video>
+      </div>
+      <div class="comp-item">
+        <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
+          <source src="videos/competition/comp-2.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="comp-item">
+        <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
+          <source src="videos/competition/comp-3.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="comp-item comp-item--placeholder">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="rgba(194,169,107,1)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <div class="comp-item comp-item--placeholder">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="rgba(194,169,107,1)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <div class="comp-item comp-item--placeholder">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="rgba(194,169,107,1)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <div class="comp-item comp-item--placeholder">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="rgba(194,169,107,1)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <div class="comp-item comp-item--placeholder">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="rgba(194,169,107,1)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <div class="comp-item comp-item--placeholder">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="rgba(194,169,107,1)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="cta-banner"><div class="container"><div class="cta-content reveal"><h2 class="cta-title"><span class="white-text">FAZ PARTE DA </span><span class="gold-text">EQUIPA.</span></h2><p class="cta-subtitle">Interessa-te competir? Fala connosco e descobre como entrar na equipa de competi&#231;&#227;o.</p><div class="hero-cta"><a href="contact.html" class="btn btn-primary btn-lg">Contacto</a><a href="schedule.html" class="btn btn-secondary btn-lg">Ver Hor&#225;rio</a></div></div></div></section>
+
+  <footer class="footer"><div class="container"><div class="footer-grid">
+    <div class="footer-brand"><img src="images/simbolorounds.png" alt="Rounds Academy" class="site-logo-img"><p class="footer-tagline">Round by Round. Never back down.</p></div>
+    <div><p class="footer-col-title">Navega&#231;&#227;o</p><ul class="footer-links"><li><a href="index.html">In&#237;cio</a></li><li><a href="about.html">Sobre</a></li><li><a href="schedule.html">Hor&#225;rio</a></li><li><a href="competition.html">Competi&#231;&#227;o</a></li><li><a href="staff.html">Staff</a></li><li><a href="contact.html">Contacto</a></li></ul></div>
+    <div><p class="footer-col-title">Aulas</p><ul class="footer-links"><li><a href="classes/boxing.html">Boxing</a></li><li><a href="classes/kickboxing.html">Boxmaster</a></li><li><a href="classes/muay-thai.html">HIIT Boxing</a></li><li><a href="classes/box-fitness.html">SHIIT</a></li><li><a href="classes/kids.html">Boxing Kids</a></li><li><a href="classes/ladies.html">Boxing Ladies</a></li></ul></div>
+    <div><p class="footer-col-title">Contacto</p><div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>R. Prof. Gomes Teixeira 19D, 1350-264 Lisboa</span></div></div>
+  </div><div class="footer-bottom"><span>&#169; 2025 Rounds Academy.</span><div class="footer-bottom-links"><a href="en/competition.html">English</a></div></div></div></footer>
+
+  <button class="back-top" id="back-top" aria-label="Voltar ao topo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg></button>
+  <script src="js/main.js"></script>
+</body>
+</html>
