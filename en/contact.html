@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="../images/simbolorounds.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Contact Rounds Academy &#8212; Get in touch to start training, ask about memberships, or find out more about our classes.">
   <title>Contact &#8212; Rounds Academy</title>
@@ -145,7 +146,7 @@
               <h3 style="font-size:22px;margin-bottom:8px">Send a Message</h3>
               <p style="font-size:14px;color:var(--gray-500);margin-bottom:28px">We'll get back to you within 24 hours.</p>
 
-              <form class="form contact-form" novalidate>
+              <form class="form contact-form" method="POST" action="https://formspree.io/f/mjglbbjl" novalidate>
                 <div class="form-row">
                   <div class="form-group">
                     <label class="form-label" for="fname">First Name</label>
@@ -169,6 +170,10 @@
                   <textarea class="form-textarea" id="message" name="message" placeholder="Tell us about your experience level, goals, or any questions you have..."></textarea>
                 </div>
 
+                <div style="background:rgba(194,169,107,.06);border:1px solid rgba(194,169,107,.15);border-radius:4px;padding:14px 16px;margin-bottom:4px">
+                  <p style="font-family:var(--f-head);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#C2A96B;margin-bottom:6px">Physical Activity Notice</p>
+                  <p style="font-size:12px;color:var(--gray-500);line-height:1.65">Combat sports involve inherent physical risks. We recommend consulting a doctor before starting any training programme, especially if you have pre-existing health conditions. Rounds Academy is not liable for injuries resulting from participation without adequate medical evaluation.</p>
+                </div>
                 <button type="submit" class="btn btn-primary btn-lg" style="align-self:flex-start">Send Message</button>
                 <div class="form-success">Your message has been sent. We'll be in touch shortly!</div>
               </form>
@@ -202,7 +207,7 @@
       </div>
       <div class="footer-bottom">
         <span>&#169; 2025 Rounds Academy. All rights reserved.</span>
-        <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="../contact.html">Portugu&#234;s</a></div>
+        <div class="footer-bottom-links"><a href="privacy-policy.html">Privacy Policy</a><a href="../contact.html">Portugu&#234;s</a></div>
       </div>
     </div>
   </footer>

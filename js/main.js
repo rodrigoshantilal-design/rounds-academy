@@ -198,3 +198,28 @@
   }
 
 })();
+
+/* ── Cookie consent banner ──────────────────────────────── */
+(function () {
+  if (localStorage.getItem('cookie-consent') === 'accepted') return;
+
+  var lang = document.documentElement.lang || 'pt';
+  var isEN = lang === 'en';
+  var inClasses = window.location.pathname.indexOf('/classes/') !== -1;
+  var privacyHref = inClasses ? '../privacy-policy.html' : 'privacy-policy.html';
+
+  var banner = document.createElement('div');
+  banner.className = 'cookie-banner';
+  banner.innerHTML = isEN
+    ? '<p>This site uses Google Fonts and Google Maps, which may transfer data to Google\'s servers. By continuing you accept our <a href="' + privacyHref + '">Privacy Policy</a>.</p><button class="cookie-accept">Accept</button>'
+    : '<p>Este site utiliza Google Fonts e Google Maps, que podem transferir dados para os servidores da Google. Ao continuar aceita a nossa <a href="' + privacyHref + '">Política de Privacidade</a>.</p><button class="cookie-accept">Aceitar</button>';
+
+  document.body.appendChild(banner);
+  setTimeout(function () { banner.classList.add('visible'); }, 400);
+
+  banner.querySelector('.cookie-accept').addEventListener('click', function () {
+    localStorage.setItem('cookie-consent', 'accepted');
+    banner.style.transform = 'translateY(100%)';
+    setTimeout(function () { banner.remove(); }, 400);
+  });
+}());
