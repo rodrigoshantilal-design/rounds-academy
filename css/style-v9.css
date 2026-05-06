@@ -432,7 +432,7 @@ h1,h2,h3,h4 { font-family:var(--f-head); font-weight:700; line-height:1.1; }
 }
 .about-image-wrap { position:relative; }
 .about-image {
-  width:100%; aspect-ratio:4/5; border-radius:var(--r);
+  width:100%; aspect-ratio:9/10; border-radius:var(--r);
   overflow:hidden; border:1px solid var(--border);
 }
 .about-image-decor {
@@ -751,7 +751,7 @@ a.sched-entry:hover { opacity:.75; }
 .contact-item-value { font-size:19px; color:var(--gray-300); line-height:1.5; }
 .social-links { display:flex; gap:10px; }
 .social-link {
-  width:44px; height:44px; background:var(--dark-2);
+  width:50px; height:50px; background:var(--dark-2);
   border:1px solid var(--border); border-radius:var(--r);
   display:flex; align-items:center; justify-content:center;
   transition:var(--ease); color:var(--gray-500);
@@ -760,7 +760,7 @@ a.sched-entry:hover { opacity:.75; }
   background:var(--gold-dim); border-color:var(--border-light);
   color:var(--gold); transform:translateY(-2px);
 }
-.social-link svg { width:18px; height:18px; }
+.social-link svg { width:22px; height:22px; }
 .map-placeholder {
   margin-top:36px; height:300px; border-radius:var(--r);
   border:1px solid var(--border); overflow:hidden;
