@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="images/simbolorounds.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rounds Academy — Junta-te à melhor academia de boxing em Lisboa. Boxing, Kickboxing, HIIT Boxing, Muay-Thai e muito mais.">
+  <title>Junta-te a Nós — Rounds Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Design tokens (mirrors style-v9.css) ── */
+    :root {
+      --gold:         #B59A5A;
+      --gold-light:   #C2A96B;
+      --gold-dark:    #9C844C;
+      --gold-dim:     rgba(181,154,90,.1);
+      --black:        #0D0D0D;
+      --dark-2:       #1A1A1A;
+      --border:       rgba(181,154,90,.18);
+      --border-light: rgba(181,154,90,.35);
+      --gray-300:     #9C844C;
+      --gray-500:     rgba(181,154,90,.6);
+      --f-disp:       'Bebas Neue', sans-serif;
+      --f-head:       'Oswald', sans-serif;
+      --f-body:       'Inter', sans-serif;
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      background: var(--black);
+      color: var(--gold);
+      font-family: var(--f-body);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    img { max-width:100%; display:block; }
+    a { text-decoration:none; color:inherit; }
+
+    /* ── Minimal top bar ── */
+    .topbar {
+      position: fixed; top:0; left:0; right:0;
+      height: 70px;
+      display: flex; align-items:center; justify-content:space-between;
+      padding: 0 32px;
+      background: rgba(13,13,13,.95);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+    .topbar-logo img { height:36px; width:auto; }
+    .topbar-right { display:flex; align-items:center; gap:16px; }
+    .topbar-site {
+      font-family: var(--f-head);
+      font-size: 13px; font-weight: 500;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--border-light);
+      padding: 9px 18px; border-radius: 3px;
+      transition: background .25s, color .25s;
+      white-space: nowrap;
+    }
+    .topbar-site:hover { background: var(--gold-dim); }
+    .topbar-cta {
+      font-family: var(--f-head);
+      font-size: 13px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--black);
+      background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+      padding: 10px 22px; border-radius: 3px;
+      transition: opacity .25s;
+      white-space: nowrap;
+    }
+    .topbar-cta:hover { opacity:.85; }
+    @media (max-width:500px) { .topbar-site { display:none; } }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items:center; justify-content:center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset:0;
+      background: url('images/PTCAPA.jpg') center/cover no-repeat;
+    }
+    .hero-bg::after {
+      content:'';
+      position:absolute; inset:0;
+      background: linear-gradient(
+        to bottom,
+        rgba(13,13,13,.55) 0%,
+        rgba(13,13,13,.72) 60%,
+        rgba(13,13,13,.96) 100%
+      );
+    }
+    .hero-content {
+      position: relative; z-index:1;
+      padding: 120px 24px 80px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      font-family: var(--f-head);
+      font-size: 13px; font-weight:500;
+      letter-spacing: 4px; text-transform:uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+    .hero-logo { width: 300px; max-width:72vw; margin: 0 auto 36px; }
+    .hero-headline {
+      font-family: var(--f-disp);
+      font-size: clamp(54px, 10vw, 110px);
+      line-height: 1;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 55%, var(--gold-dark) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 20px;
+    }
+    .hero-sub {
+      font-family: var(--f-head);
+      font-size: clamp(16px, 2.5vw, 22px);
+      font-weight: 300; letter-spacing: 1.5px;
+      color: rgba(181,154,90,.75);
+      margin-bottom: 48px;
+    }
+    .btn-hero {
+      display: inline-block;
+      font-family: var(--f-head);
+      font-size: 16px; font-weight:700;
+      letter-spacing: 3px; text-transform:uppercase;
+      color: var(--black);
+      background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+      padding: 18px 52px; border-radius: 3px;
+      transition: transform .25s, box-shadow .25s;
+      box-shadow: 0 8px 32px rgba(181,154,90,.3);
+    }
+    .btn-hero:hover { transform:translateY(-2px); box-shadow:0 12px 40px rgba(181,154,90,.45); }
+
+    /* ── Social proof bar ── */
+    .proof-bar {
+      background: var(--dark-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 0;
+    }
+    .proof-bar-inner {
+      max-width: 1000px; margin:0 auto; padding:0 32px;
+      display: flex; align-items:center; justify-content:center;
+      gap: 0; flex-wrap:wrap;
+    }
+    .proof-item {
+      text-align:center;
+      padding: 12px 40px;
+      border-right: 1px solid var(--border);
+      flex: 1; min-width:160px;
+    }
+    .proof-item:last-child { border-right:none; }
+    .proof-number {
+      font-family: var(--f-disp);
+      font-size: 44px; letter-spacing:1px;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      line-height:1;
+    }
+    .proof-label {
+      font-family: var(--f-head);
+      font-size: 12px; font-weight:500;
+      letter-spacing: 2.5px; text-transform:uppercase;
+      color: var(--gray-500);
+      margin-top: 4px;
+    }
+
+    /* ── Quem Somos ── */
+    .quem-somos {
+      padding: 96px 0;
+      background: var(--black);
+    }
+    .quem-somos-inner {
+      max-width: 960px; margin: 0 auto; padding: 0 32px;
+    }
+    .qs-tag {
+      font-family: var(--f-head);
+      font-size: 13px; font-weight: 500;
+      letter-spacing: 4px; text-transform: uppercase;
+      color: var(--gold);
+      display: block; margin-bottom: 32px;
+    }
+    .qs-text {
+      font-family: var(--f-head);
+      font-size: clamp(22px, 3.2vw, 38px);
+      font-weight: 400; line-height: 1.45;
+      color: var(--gold);
+    }
+
+    .section-tag {
+      font-family:var(--f-head); font-size:13px; font-weight:500;
+      letter-spacing:4px; text-transform:uppercase;
+      color:var(--gold); display:block; margin-bottom:14px; text-align:center;
+    }
+    .section-title {
+      font-family: var(--f-head);
+      font-size: clamp(36px, 5vw, 60px); font-weight:700;
+      text-align: center;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      margin-bottom: 16px;
+    }
+    .gold-line {
+      width:52px; height:3px;
+      background:linear-gradient(90deg,var(--gold-dark),var(--gold),var(--gold-light));
+      border-radius:2px; margin:0 auto 64px;
+    }
+
+    /* ── Photo strip ── */
+    .photo-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      height: 340px;
+      overflow: hidden;
+    }
+    .photo-strip-item {
+      overflow: hidden; position:relative;
+    }
+    .photo-strip-item img {
+      width:100%; height:100%;
+      object-fit:cover;
+      transition: transform .6s ease;
+      filter: brightness(.75);
+    }
+    .photo-strip-item:hover img { transform:scale(1.06); filter:brightness(1); }
+
+    /* ── Classes ── */
+    .classes {
+      padding: 96px 0;
+      background: var(--black);
+    }
+    .classes-inner {
+      max-width: 1100px; margin:0 auto; padding:0 32px;
+    }
+    .classes-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 0;
+    }
+    .class-pill {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 22px 20px;
+      text-align:center;
+      transition: border-color .3s, background .3s;
+    }
+    .class-pill:hover { border-color: var(--gold); background: var(--gold-dim); }
+    .class-pill-name {
+      font-family: var(--f-head);
+      font-size: 17px; font-weight:600;
+      letter-spacing:1.5px; text-transform:uppercase;
+      color: var(--gold);
+      display:block; margin-bottom:4px;
+    }
+    .class-pill-dur {
+      font-family: var(--f-head);
+      font-size: 11px; font-weight:500;
+      letter-spacing:2px; text-transform:uppercase;
+      color: var(--gray-500);
+      display:block; margin-bottom:10px;
+    }
+    .class-pill-desc {
+      font-size: 13px; color:rgba(181,154,90,.5);
+      line-height:1.6; display:block;
+    }
+
+    /* ── Form ── */
+    .join {
+      padding: 96px 0;
+      background: var(--black);
+    }
+    .join-inner {
+      max-width: 620px; margin:0 auto; padding:0 32px;
+      text-align:center;
+    }
+    .join-inner .section-title { margin-bottom:8px; }
+    .join-sub {
+      font-size:16px; color:var(--gray-500);
+      margin-bottom:48px; line-height:1.7;
+    }
+    .join-form {
+      display:flex; flex-direction:column; gap:18px;
+      text-align:left;
+    }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .form-group { display:flex; flex-direction:column; gap:7px; }
+    .form-group label {
+      font-family:var(--f-head); font-size:12px; font-weight:500;
+      letter-spacing:2.5px; text-transform:uppercase;
+      color:var(--gray-300);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 14px 16px;
+      font-family:var(--f-body); font-size:15px;
+      color: var(--gold);
+      outline:none;
+      transition: border-color .25s;
+      appearance: none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color:var(--gray-500); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--gold); }
+    .form-group select option { background: var(--dark-2); color: var(--gold); }
+    .form-group textarea { resize:vertical; min-height:110px; }
+    .btn-submit {
+      width:100%;
+      font-family:var(--f-head); font-size:16px; font-weight:700;
+      letter-spacing:3px; text-transform:uppercase;
+      color:var(--black);
+      background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+      border:none; border-radius:4px;
+      padding: 18px;
+      cursor:pointer;
+      transition: transform .25s, box-shadow .25s;
+      box-shadow: 0 8px 28px rgba(181,154,90,.28);
+      margin-top:8px;
+    }
+    .btn-submit:hover { transform:translateY(-2px); box-shadow:0 12px 36px rgba(181,154,90,.42); }
+    .form-note {
+      font-size:13px; color:var(--gray-500);
+      text-align:center; margin-top:14px; line-height:1.6;
+    }
+    .form-success {
+      display:none;
+      text-align:center;
+      padding: 40px 0;
+    }
+    .form-success .success-icon { font-size:48px; margin-bottom:16px; display:block; }
+    .form-success h3 {
+      font-family:var(--f-head); font-size:28px; font-weight:700;
+      color:var(--gold); margin-bottom:10px;
+    }
+    .form-success p { color:var(--gray-500); font-size:16px; }
+
+    /* ── Mini footer ── */
+    .mini-footer {
+      background: var(--dark-2);
+      border-top: 1px solid var(--border);
+      padding: 36px 32px;
+      display:flex; align-items:center; justify-content:space-between;
+      flex-wrap:wrap; gap:20px;
+    }
+    .mini-footer-logo img { height:36px; }
+    .mini-footer-links {
+      display:flex; gap:28px; align-items:center; flex-wrap:wrap;
+    }
+    .mini-footer-links a {
+      font-family:var(--f-head); font-size:13px; font-weight:500;
+      letter-spacing:2px; text-transform:uppercase;
+      color:var(--gray-500); transition:color .25s;
+    }
+    .mini-footer-links a:hover { color:var(--gold); }
+    .footer-site-btn {
+      font-family: var(--f-head);
+      font-size: 14px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--black);
+      background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+      padding: 13px 28px; border-radius: 3px;
+      transition: opacity .25s;
+      white-space: nowrap;
+    }
+    .footer-site-btn:hover { opacity:.85; }
+    .mini-footer-legal {
+      font-size:12px; color:var(--gray-500);
+      width:100%; text-align:center; margin-top:8px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width:700px) {
+      .topbar { padding:0 18px; }
+      .proof-bar-inner { gap:0; }
+      .proof-item { padding:12px 18px; min-width:130px; }
+      .photo-strip { grid-template-columns:1fr 1fr; height:280px; }
+      .photo-strip-item:nth-child(3),
+      .photo-strip-item:nth-child(4) { display:none; }
+      .form-row { grid-template-columns:1fr; }
+      .mini-footer { flex-direction:column; align-items:flex-start; }
+    }
+    @media (max-width:460px) {
+      .proof-number { font-size:34px; }
+      .photo-strip { grid-template-columns:1fr; height:260px; }
+      .photo-strip-item:nth-child(2),
+      .photo-strip-item:nth-child(3),
+      .photo-strip-item:nth-child(4) { display:none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Minimal top bar (no full nav — keeps visitor focused) -->
+  <header class="topbar">
+    <a class="topbar-logo" href="index.html">
+      <img src="images/simbolorounds.png" alt="Rounds Academy">
+    </a>
+    <div class="topbar-right">
+      <a class="topbar-site" href="index.html">← Site Completo</a>
+      <a class="topbar-cta" href="#juntar">Junta-te a Nós</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Boxing &amp; Fitness Club · Lisboa</p>
+      <img class="hero-logo" src="images/simbolorounds.png" alt="Rounds Academy">
+      <h1 class="hero-headline">Junta-te<br>a Nós</h1>
+      <p class="hero-sub">Round by Round. Never Back Down.</p>
+      <a class="btn-hero" href="#juntar">Começa Hoje</a>
+    </div>
+  </section>
+
+  <!-- Quem Somos -->
+  <section class="quem-somos">
+    <div class="quem-somos-inner">
+      <p class="qs-tag">Quem Somos</p>
+      <p class="qs-text">Na Rounds Academy o nosso foco é o teu objetivo. Não interessa o teu nível de experiência ou condicionamento físico, estamos aqui à tua espera e vamos fazer esta viagem juntos, rumo ao teu objetivo. Junta-te a nós! Só tens de querer, e o resto fazemos juntos, em equipa, em família.</p>
+    </div>
+  </section>
+
+  <!-- Photo strip -->
+  <div class="photo-strip">
+    <div class="photo-strip-item">
+      <img src="images/boxing/BOX03.jpeg" alt="Boxing na Rounds Academy" loading="lazy">
+    </div>
+    <div class="photo-strip-item">
+      <img src="images/boxing/BOX09.jpeg" alt="Treino de Boxing" loading="lazy">
+    </div>
+    <div class="photo-strip-item">
+      <img src="images/HIITBOX/HIIT02.jpeg" alt="HIIT Boxing" loading="lazy">
+    </div>
+    <div class="photo-strip-item">
+      <img src="images/boxing/BOX14.jpeg" alt="Rounds Academy Lisboa" loading="lazy">
+    </div>
+  </div>
+
+  <!-- Classes -->
+  <section class="classes">
+    <div class="classes-inner">
+      <span class="section-tag">O Que Oferecemos</span>
+      <h2 class="section-title">As Nossas Aulas</h2>
+      <div class="gold-line"></div>
+      <div class="classes-list">
+        <div class="class-pill">
+          <span class="class-pill-name">Boxing</span>
+          <span class="class-pill-dur">Todos os Níveis · 45 min</span>
+          <span class="class-pill-desc">Técnica, movimentação e tática — escola de boxe e escola de combate em simultâneo.</span>
+        </div>
+        <div class="class-pill">
+          <span class="class-pill-name">Boxmaster</span>
+          <span class="class-pill-dur">Todos os Níveis · 30 min</span>
+          <span class="class-pill-desc">Infernal e divertida em simultâneo. HIIT, técnicas de Boxe e condicionamento físico num só treino.</span>
+        </div>
+        <div class="class-pill">
+          <span class="class-pill-name">HIIT Boxing</span>
+          <span class="class-pill-dur">Todos os Níveis · 30 min</span>
+          <span class="class-pill-desc">Treino intervalado de alta intensidade combinado com técnicas básicas de Boxe. Vai desafiar todos os teus limites.</span>
+        </div>
+        <div class="class-pill">
+          <span class="class-pill-name">SHIIT</span>
+          <span class="class-pill-dur">Todos os Níveis · 30 min</span>
+          <span class="class-pill-desc">Serious High Intensity Interval Training. Condicionamento físico geral que faz doer o corpo e a alma.</span>
+        </div>
+        <div class="class-pill">
+          <span class="class-pill-name">Boxing Kids</span>
+          <span class="class-pill-dur">7–12 Anos · 45 min</span>
+          <span class="class-pill-desc">Confiança, disciplina e diversão para os mais novos, num ambiente seguro e estruturado.</span>
+        </div>
+        <div class="class-pill">
+          <span class="class-pill-name">Boxing Ladies</span>
+          <span class="class-pill-dur">Só para Mulheres · 60 min</span>
+          <span class="class-pill-desc">Espaço exclusivo para mulheres. Técnica e condicionamento físico num ambiente focado e motivador.</span>
+        </div>
+        <div class="class-pill">
+          <span class="class-pill-name">Personal Training</span>
+          <span class="class-pill-dur">One on One · 30, 45 ou 60 min</span>
+          <span class="class-pill-desc">O teu objetivo é o nosso foco. Segurança, motivação, supervisão e exclusividade total.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sign-up form -->
+  <section class="join" id="juntar">
+    <div class="join-inner">
+      <span class="section-tag">Dá o Primeiro Passo</span>
+      <h2 class="section-title">Junta-te a Nós</h2>
+      <div class="gold-line" style="margin-bottom:28px;"></div>
+      <p class="join-sub">Preenche o formulário e entraremos em contacto contigo para te ajudar a começar.</p>
+
+      <form class="join-form" id="joinForm" action="https://formspree.io/f/rounds-landing" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="O teu nome" required>
+          </div>
+          <div class="form-group">
+            <label for="apelido">Apelido</label>
+            <input type="text" id="apelido" name="apelido" placeholder="O teu apelido" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="o.teu@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="telefone">Telemóvel</label>
+          <input type="tel" id="telefone" name="telefone" placeholder="+351 9XX XXX XXX" required>
+        </div>
+        <div class="form-group">
+          <label for="aula">Aula de Interesse</label>
+          <select id="aula" name="aula" required>
+            <option value="" disabled selected>Escolhe uma aula…</option>
+            <option>Boxing</option>
+            <option>Boxmaster</option>
+            <option>HIIT Boxing</option>
+            <option>SHIIT</option>
+            <option>Boxing Kids</option>
+            <option>Boxing Ladies</option>
+            <option>Personal Training</option>
+            <option>Ainda não sei</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="mensagem">Mensagem (opcional)</label>
+          <textarea id="mensagem" name="mensagem" placeholder="Alguma questão ou preferência de horário?"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Junta-te a Nós →</button>
+        <p class="form-note">Os teus dados são usados apenas para te contactarmos. Não partilhamos informação com terceiros.</p>
+      </form>
+
+      <div class="form-success" id="formSuccess">
+        <span class="success-icon">🥊</span>
+        <h3>Bem-vindo à Rounds!</h3>
+        <p>Recebemos a tua mensagem e entraremos em contacto em breve.<br>Round by Round. Never Back Down.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mini footer -->
+  <footer class="mini-footer">
+    <div class="mini-footer-logo">
+      <img src="images/simbolorounds.png" alt="Rounds Academy">
+    </div>
+    <div class="mini-footer-links">
+      <a href="tel:+351211303924">+351 21 130 3924</a>
+      <a href="mailto:info@roundsacademy.pt">info@roundsacademy.pt</a>
+      <a href="https://www.instagram.com/rounds_academy" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <a href="index.html" class="footer-site-btn">Ver o Site Completo →</a>
+    <p class="mini-footer-legal">© 2025 Rounds Academy · R. Prof. Gomes Teixeira 19D, 1350-264 Lisboa</p>
+  </footer>
+
+  <script>
+    // Smooth form feedback without page reload
+    document.getElementById('joinForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = this;
+      const btn = form.querySelector('.btn-submit');
+      btn.textContent = 'A enviar…';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          document.getElementById('formSuccess').style.display = 'block';
+        } else {
+          btn.textContent = 'Erro — tenta novamente';
+          btn.disabled = false;
+        }
+      } catch {
+        btn.textContent = 'Erro — tenta novamente';
+        btn.disabled = false;
+      }
+    });
+  </script>
+
+</body>
+</html>
