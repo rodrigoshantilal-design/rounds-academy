@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^contacta-nos$ /contacta-nos.html [L,R=301]

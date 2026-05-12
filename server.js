@@ -25,8 +25,9 @@ const ROOT = path.resolve(__dirname);
 http.createServer((req, res) => {
   let url = req.url.split('?')[0];
   if (url === '/') url = '/index.html';
+  if (url === '/contacta-nos') url = '/contacta-nos.html';
 
-  const filePath = path.resolve(ROOT, url.slice(1));
+  const filePath = path.resolve(ROOT, decodeURIComponent(url.slice(1)));
 
   if (!filePath.startsWith(ROOT)) {
     res.writeHead(403);

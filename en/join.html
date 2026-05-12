@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="../images/simbolorounds.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rounds Academy — Join the best boxing academy in Lisbon. Boxing, Kickboxing, HIIT Boxing, Muay-Thai and more.">
+  <title>Join Us — Rounds Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold:         #B59A5A;
+      --gold-light:   #C2A96B;
+      --gold-dark:    #9C844C;
+      --gold-dim:     rgba(181,154,90,.1);
+      --black:        #0D0D0D;
+      --dark-2:       #1A1A1A;
+      --border:       rgba(181,154,90,.18);
+      --border-light: rgba(181,154,90,.35);
+      --gray-300:     #9C844C;
+      --gray-500:     rgba(181,154,90,.6);
+      --f-disp:       'Bebas Neue', sans-serif;
+      --f-head:       'Oswald', sans-serif;
+      --f-body:       'Inter', sans-serif;
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      background: var(--black);
+      color: var(--gold);
+      font-family: var(--f-body);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    img { max-width:100%; display:block; }
+    a { text-decoration:none; color:inherit; }
+
+    .topbar {
+      position: fixed; top:0; left:0; right:0;
+      height: 70px;
+      display: flex; align-items:center; justify-content:space-between;
+      padding: 0 32px;
+      background: rgba(13,13,13,.95);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+    .topbar-logo img { height:36px; width:auto; }
+    .topbar-center { position:absolute; left:50%; transform:translateX(-50%); }
+    .topbar-right { display:flex; align-items:center; gap:16px; }
+    .topbar-site {
+      font-family: var(--f-head);
+      font-size: 13px; font-weight: 500;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--border-light);
+      padding: 9px 18px; border-radius: 3px;
+      transition: background .25s, color .25s;
+      white-space: nowrap;
+    }
+    .topbar-site:hover { background: var(--gold-dim); }
+    .topbar-cta {
+      font-family: var(--f-head);
+      font-size: 13px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--black);
+      background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+      padding: 10px 22px; border-radius: 3px;
+      transition: opacity .25s;
+      white-space: nowrap;
+    }
+    .topbar-cta:hover { opacity:.85; }
+    .lang-switch {
+      display:flex; align-items:center; gap:4px;
+    }
+    .lang-switch a {
+      font-family: var(--f-head);
+      font-size: 16px; font-weight:600;
+      letter-spacing: 2px; text-transform:uppercase;
+      color: rgba(181,154,90,.45);
+      padding: 6px 13px; border-radius: 3px;
+      transition: color .2s, background .2s;
+    }
+    .lang-switch a:hover, .lang-switch a.active { color: var(--gold); background: var(--gold-dim); }
+    @media (max-width:500px) { .topbar-site { display:none; } }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items:center; justify-content:center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset:0;
+      background: url('../images/space/WhatsApp%20Image%202026-05-11%20at%2015.08.54%20(7).jpeg') center/cover no-repeat;
+    }
+    .hero-bg::after {
+      content:'';
+      position:absolute; inset:0;
+      background: linear-gradient(
+        to bottom,
+        rgba(13,13,13,.55) 0%,
+        rgba(13,13,13,.72) 60%,
+        rgba(13,13,13,.96) 100%
+      );
+    }
+    .hero-content {
+      position: relative; z-index:1;
+      padding: 120px 24px 80px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      font-family: var(--f-head);
+      font-size: 13px; font-weight:500;
+      letter-spacing: 4px; text-transform:uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+    .hero-logo { width: 300px; max-width:72vw; margin: 0 auto 36px; }
+    .hero-headline {
+      font-family: var(--f-disp);
+      font-size: clamp(54px, 10vw, 110px);
+      line-height: 1;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 55%, var(--gold-dark) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 20px;
+    }
+    .hero-sub {
+      font-family: var(--f-head);
+      font-size: clamp(16px, 2.5vw, 22px);
+      font-weight: 300; letter-spacing: 1.5px;
+      color: rgba(181,154,90,.75);
+      margin-bottom: 48px;
+    }
+    .btn-hero {
+      display: inline-block;
+      font-family: var(--f-head);
+      font-size: 16px; font-weight:700;
+      letter-spacing: 3px; text-transform:uppercase;
+      color: var(--black);
+      background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+      padding: 18px 52px; border-radius: 3px;
+      transition: transform .25s, box-shadow .25s;
+      box-shadow: 0 8px 32px rgba(181,154,90,.3);
+    }
+    .btn-hero:hover { transform:translateY(-2px); box-shadow:0 12px 40px rgba(181,154,90,.45); }
+
+    .proof-bar {
+      background: var(--dark-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 0;
+    }
+    .proof-bar-inner {
+      max-width: 1000px; margin:0 auto; padding:0 32px;
+      display: flex; align-items:center; justify-content:center;
+      gap: 0; flex-wrap:wrap;
+    }
+    .proof-item {
+      text-align:center;
+      padding: 12px 40px;
+      border-right: 1px solid var(--border);
+      flex: 1; min-width:160px;
+    }
+    .proof-item:last-child { border-right:none; }
+    .proof-number {
+      font-family: var(--f-disp);
+      font-size: 44px; letter-spacing:1px;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      line-height:1;
+    }
+    .proof-label {
+      font-family: var(--f-head);
+      font-size: 12px; font-weight:500;
+      letter-spacing: 2.5px; text-transform:uppercase;
+      color: var(--gray-500);
+      margin-top: 4px;
+    }
+
+    .quem-somos { padding: 96px 0; background: var(--black); }
+    .quem-somos-inner { max-width: 960px; margin: 0 auto; padding: 0 32px; }
+    .qs-tag {
+      font-family: var(--f-head);
+      font-size: 13px; font-weight: 500;
+      letter-spacing: 4px; text-transform: uppercase;
+      color: var(--gold);
+      display: block; margin-bottom: 32px;
+    }
+    .qs-text {
+      font-family: var(--f-head);
+      font-size: clamp(22px, 3.2vw, 38px);
+      font-weight: 400; line-height: 1.45;
+      color: var(--gold);
+    }
+
+    .section-tag {
+      font-family:var(--f-head); font-size:13px; font-weight:500;
+      letter-spacing:4px; text-transform:uppercase;
+      color:var(--gold); display:block; margin-bottom:14px; text-align:center;
+    }
+    .section-title {
+      font-family: var(--f-head);
+      font-size: clamp(36px, 5vw, 60px); font-weight:700;
+      text-align: center;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      margin-bottom: 16px;
+    }
+    .gold-line {
+      width:52px; height:3px;
+      background:linear-gradient(90deg,var(--gold-dark),var(--gold),var(--gold-light));
+      border-radius:2px; margin:0 auto 64px;
+    }
+
+    .photo-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      height: 340px;
+      overflow: hidden;
+    }
+    .photo-strip-item { overflow: hidden; position:relative; }
+    .photo-strip-item img {
+      width:100%; height:100%;
+      object-fit:cover;
+      transition: transform .6s ease;
+      filter: brightness(.75);
+    }
+    .photo-strip-item:hover img { transform:scale(1.06); filter:brightness(1); }
+
+    .classes { padding: 96px 0; background: var(--black); }
+    .classes-inner { max-width: 1100px; margin:0 auto; padding:0 32px; }
+    .classes-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .class-pill {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 22px 20px;
+      text-align:center;
+      transition: border-color .3s, background .3s;
+    }
+    .class-pill:hover { border-color: var(--gold); background: var(--gold-dim); }
+    .class-pill-name {
+      font-family: var(--f-head);
+      font-size: 17px; font-weight:600;
+      letter-spacing:1.5px; text-transform:uppercase;
+      color: var(--gold);
+      display:block; margin-bottom:4px;
+    }
+    .class-pill-dur {
+      font-family: var(--f-head);
+      font-size: 11px; font-weight:500;
+      letter-spacing:2px; text-transform:uppercase;
+      color: var(--gray-500);
+      display:block; margin-bottom:10px;
+    }
+    .class-pill-desc { font-size: 13px; color:rgba(181,154,90,.5); line-height:1.6; display:block; }
+
+    .join { padding: 96px 0; background: var(--black); }
+    .join-inner { max-width: 620px; margin:0 auto; padding:0 32px; text-align:center; }
+    .join-inner .section-title { margin-bottom:8px; }
+    .join-sub { font-size:16px; color:var(--gray-500); margin-bottom:48px; line-height:1.7; }
+    .join-form { display:flex; flex-direction:column; gap:18px; text-align:left; }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .form-group { display:flex; flex-direction:column; gap:7px; }
+    .form-group label {
+      font-family:var(--f-head); font-size:12px; font-weight:500;
+      letter-spacing:2.5px; text-transform:uppercase;
+      color:var(--gray-300);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 14px 16px;
+      font-family:var(--f-body); font-size:15px;
+      color: var(--gold);
+      outline:none;
+      transition: border-color .25s;
+      appearance: none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color:var(--gray-500); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--gold); }
+    .form-group select option { background: var(--dark-2); color: var(--gold); }
+    .form-group textarea { resize:vertical; min-height:110px; }
+    .phone-field { display:flex; gap:8px; }
+    .phone-field .phone-code { width:130px; flex-shrink:0; }
+    .phone-field input { flex:1; }
+    .field-error { background:#c0392b !important; border-color:#c0392b !important; color:#fff !important; }
+    .field-error::placeholder { color:rgba(255,255,255,.6) !important; }
+    .btn-submit {
+      width:100%;
+      font-family:var(--f-head); font-size:16px; font-weight:700;
+      letter-spacing:3px; text-transform:uppercase;
+      color:var(--black);
+      background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+      border:none; border-radius:4px;
+      padding: 18px;
+      cursor:pointer;
+      transition: transform .25s, box-shadow .25s;
+      box-shadow: 0 8px 28px rgba(181,154,90,.28);
+      margin-top:8px;
+    }
+    .btn-submit:hover { transform:translateY(-2px); box-shadow:0 12px 36px rgba(181,154,90,.42); }
+    .form-note { font-size:13px; color:var(--gray-500); text-align:center; margin-top:14px; line-height:1.6; }
+    .form-success { display:none; text-align:center; padding: 40px 0; }
+    .form-success .success-icon { font-size:48px; margin-bottom:16px; display:block; }
+    .form-success h3 { font-family:var(--f-head); font-size:28px; font-weight:700; color:var(--gold); margin-bottom:10px; }
+    .form-success p { color:var(--gray-500); font-size:16px; }
+
+    .mini-footer {
+      background: var(--dark-2);
+      border-top: 1px solid var(--border);
+      padding: 36px 32px;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      flex-wrap:wrap; gap:20px;
+      text-align:center;
+    }
+    .mini-footer-logo img { height:36px; }
+    .mini-footer-links { display:flex; gap:28px; align-items:center; flex-wrap:wrap; justify-content:center; }
+    .mini-footer-links a {
+      font-family:var(--f-head); font-size:13px; font-weight:500;
+      letter-spacing:2px; text-transform:uppercase;
+      color:var(--gray-500); transition:color .25s;
+    }
+    .mini-footer-links a:hover { color:var(--gold); }
+    .footer-site-btn {
+      font-family: var(--f-head);
+      font-size: 14px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--black);
+      background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+      padding: 13px 28px; border-radius: 3px;
+      transition: opacity .25s;
+      white-space: nowrap;
+    }
+    .footer-site-btn:hover { opacity:.85; }
+    .mini-footer-legal { font-size:12px; color:var(--gray-500); width:100%; text-align:center; margin-top:8px; }
+
+    @media (max-width:700px) {
+      .topbar { padding:0 18px; }
+      .proof-bar-inner { gap:0; }
+      .proof-item { padding:12px 18px; min-width:130px; }
+      .photo-strip { grid-template-columns:1fr 1fr; height:280px; }
+      .photo-strip-item:nth-child(3),
+      .photo-strip-item:nth-child(4) { display:none; }
+      .form-row { grid-template-columns:1fr; }
+    }
+    @media (max-width:460px) {
+      .proof-number { font-size:34px; }
+      .photo-strip { grid-template-columns:1fr; height:260px; }
+      .photo-strip-item:nth-child(2),
+      .photo-strip-item:nth-child(3),
+      .photo-strip-item:nth-child(4) { display:none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <a class="topbar-logo" href="../index.html">
+      <img src="../images/simbolorounds.png" alt="Rounds Academy">
+    </a>
+    <div class="topbar-center">
+      <div class="lang-switch"><a href="../contacta-nos.html">PT</a><a href="join.html" class="active">EN</a></div>
+    </div>
+    <div class="topbar-right">
+      <a class="topbar-site" href="index.html">← Full Site</a>
+      <a class="topbar-cta" href="#join">Join Us</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Boxing &amp; Fitness Club · Lisbon</p>
+      <img class="hero-logo" src="../images/simbolorounds.png" alt="Rounds Academy">
+      <h1 class="hero-headline">Join<br>Us</h1>
+      <p class="hero-sub">Round by Round. Never Back Down.</p>
+      <a class="btn-hero" href="#join">Start Today</a>
+    </div>
+  </section>
+
+  <section class="quem-somos">
+    <div class="quem-somos-inner">
+      <p class="qs-tag">Who We Are</p>
+      <p class="qs-text">At Rounds Academy our focus is your goal. It doesn't matter your experience level or fitness, we are here waiting for you and we will make this journey together, towards your goal. Join us! You just have to want it, and we'll do the rest together, as a team, as a family.</p>
+    </div>
+  </section>
+
+  <div class="photo-strip">
+    <div class="photo-strip-item"><img src="../images/boxing/BOX03.jpeg" alt="Boxing at Rounds Academy" loading="lazy"></div>
+    <div class="photo-strip-item"><img src="../images/boxing/BOX09.jpeg" alt="Boxing Training" loading="lazy"></div>
+    <div class="photo-strip-item"><img src="../images/HIITBOX/HIIT02.jpeg" alt="HIIT Boxing" loading="lazy"></div>
+    <div class="photo-strip-item"><img src="../images/boxing/BOX14.jpeg" alt="Rounds Academy Lisbon" loading="lazy"></div>
+  </div>
+
+  <section class="classes">
+    <div class="classes-inner">
+      <span class="section-tag">What We Offer</span>
+      <h2 class="section-title">Our Classes</h2>
+      <div class="gold-line"></div>
+      <div class="classes-list">
+        <div class="class-pill">
+          <span class="class-pill-name">Boxing</span>
+          <span class="class-pill-dur">All Levels · 45 min</span>
+          <span class="class-pill-desc">Technique, footwork and tactics — boxing school and combat school simultaneously.</span>
+        </div>
+        <div class="class-pill">
+          <span class="class-pill-name">Boxmaster</span>
+          <span class="class-pill-dur">All Levels · 30 min</span>
+          <span class="class-pill-desc">Brutal and fun at the same time. HIIT, boxing techniques and conditioning all in one session.</span>
+        </div>
+        <div class="class-pill">
+          <span class="class-pill-name">HIIT Boxing</span>
+          <span class="class-pill-dur">All Levels · 30 min</span>
+          <span class="class-pill-desc">High-intensity interval training combined with basic boxing techniques. It will challenge all your limits.</span>
+        </div>
+        <div class="class-pill">
+          <span class="class-pill-name">SHIIT</span>
+          <span class="class-pill-dur">All Levels · 30 min</span>
+          <span class="class-pill-desc">Serious High Intensity Interval Training. General conditioning that hurts body and soul.</span>
+        </div>
+        <div class="class-pill">
+          <span class="class-pill-name">Boxing Kids</span>
+          <span class="class-pill-dur">7–12 Years · 45 min</span>
+          <span class="class-pill-desc">Confidence, discipline and fun for the youngest, in a safe and structured environment.</span>
+        </div>
+        <div class="class-pill">
+          <span class="class-pill-name">Boxing Ladies</span>
+          <span class="class-pill-dur">Women Only · 45 min</span>
+          <span class="class-pill-desc">Exclusive space for women. Technique and conditioning in a focused and motivating environment.</span>
+        </div>
+        <div class="class-pill">
+          <span class="class-pill-name">Personal Training</span>
+          <span class="class-pill-dur">One on One · 30, 45 or 60 min</span>
+          <span class="class-pill-desc">Your goal is our focus. Safety, motivation, supervision and total exclusivity.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="join" id="join">
+    <div class="join-inner">
+      <span class="section-tag">Take the First Step</span>
+      <h2 class="section-title">Join Us</h2>
+      <div class="gold-line" style="margin-bottom:28px;"></div>
+      <p class="join-sub">Fill in the form and we will get in touch to help you get started.</p>
+
+      <form class="join-form" id="joinForm" action="../mail.php" method="POST" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nome">First Name</label>
+            <input type="text" id="nome" name="nome" placeholder="Your first name" required>
+          </div>
+          <div class="form-group">
+            <label for="apelido">Last Name</label>
+            <input type="text" id="apelido" name="apelido" placeholder="Your last name" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="telefone">Phone</label>
+          <div class="phone-field">
+            <select class="phone-code" id="phone-code" name="phone-code">
+              <option value="+351">PT +351</option>
+              <option value="+93">AF +93</option>
+              <option value="+355">AL +355</option>
+              <option value="+213">DZ +213</option>
+              <option value="+376">AD +376</option>
+              <option value="+244">AO +244</option>
+              <option value="+54">AR +54</option>
+              <option value="+374">AM +374</option>
+              <option value="+61">AU +61</option>
+              <option value="+43">AT +43</option>
+              <option value="+994">AZ +994</option>
+              <option value="+1-BS">BS +1</option>
+              <option value="+973">BH +973</option>
+              <option value="+880">BD +880</option>
+              <option value="+1-BB">BB +1</option>
+              <option value="+375">BY +375</option>
+              <option value="+32">BE +32</option>
+              <option value="+501">BZ +501</option>
+              <option value="+229">BJ +229</option>
+              <option value="+975">BT +975</option>
+              <option value="+591">BO +591</option>
+              <option value="+387">BA +387</option>
+              <option value="+267">BW +267</option>
+              <option value="+55">BR +55</option>
+              <option value="+673">BN +673</option>
+              <option value="+359">BG +359</option>
+              <option value="+226">BF +226</option>
+              <option value="+257">BI +257</option>
+              <option value="+238">CV +238</option>
+              <option value="+855">KH +855</option>
+              <option value="+237">CM +237</option>
+              <option value="+1-CA">CA +1</option>
+              <option value="+236">CF +236</option>
+              <option value="+235">TD +235</option>
+              <option value="+56">CL +56</option>
+              <option value="+86">CN +86</option>
+              <option value="+57">CO +57</option>
+              <option value="+269">KM +269</option>
+              <option value="+242">CG +242</option>
+              <option value="+243">CD +243</option>
+              <option value="+506">CR +506</option>
+              <option value="+385">HR +385</option>
+              <option value="+53">CU +53</option>
+              <option value="+357">CY +357</option>
+              <option value="+420">CZ +420</option>
+              <option value="+45">DK +45</option>
+              <option value="+253">DJ +253</option>
+              <option value="+1-DO">DO +1</option>
+              <option value="+593">EC +593</option>
+              <option value="+20">EG +20</option>
+              <option value="+503">SV +503</option>
+              <option value="+240">GQ +240</option>
+              <option value="+291">ER +291</option>
+              <option value="+372">EE +372</option>
+              <option value="+268">SZ +268</option>
+              <option value="+251">ET +251</option>
+              <option value="+679">FJ +679</option>
+              <option value="+358">FI +358</option>
+              <option value="+33">FR +33</option>
+              <option value="+241">GA +241</option>
+              <option value="+220">GM +220</option>
+              <option value="+995">GE +995</option>
+              <option value="+49">DE +49</option>
+              <option value="+233">GH +233</option>
+              <option value="+30">GR +30</option>
+              <option value="+502">GT +502</option>
+              <option value="+224">GN +224</option>
+              <option value="+245">GW +245</option>
+              <option value="+592">GY +592</option>
+              <option value="+509">HT +509</option>
+              <option value="+504">HN +504</option>
+              <option value="+36">HU +36</option>
+              <option value="+354">IS +354</option>
+              <option value="+91">IN +91</option>
+              <option value="+62">ID +62</option>
+              <option value="+98">IR +98</option>
+              <option value="+964">IQ +964</option>
+              <option value="+353">IE +353</option>
+              <option value="+972">IL +972</option>
+              <option value="+39">IT +39</option>
+              <option value="+1-JM">JM +1</option>
+              <option value="+81">JP +81</option>
+              <option value="+962">JO +962</option>
+              <option value="+7-KZ">KZ +7</option>
+              <option value="+254">KE +254</option>
+              <option value="+383">XK +383</option>
+              <option value="+965">KW +965</option>
+              <option value="+996">KG +996</option>
+              <option value="+856">LA +856</option>
+              <option value="+371">LV +371</option>
+              <option value="+961">LB +961</option>
+              <option value="+266">LS +266</option>
+              <option value="+231">LR +231</option>
+              <option value="+218">LY +218</option>
+              <option value="+423">LI +423</option>
+              <option value="+370">LT +370</option>
+              <option value="+352">LU +352</option>
+              <option value="+261">MG +261</option>
+              <option value="+265">MW +265</option>
+              <option value="+60">MY +60</option>
+              <option value="+960">MV +960</option>
+              <option value="+223">ML +223</option>
+              <option value="+356">MT +356</option>
+              <option value="+222">MR +222</option>
+              <option value="+230">MU +230</option>
+              <option value="+52">MX +52</option>
+              <option value="+373">MD +373</option>
+              <option value="+377">MC +377</option>
+              <option value="+976">MN +976</option>
+              <option value="+382">ME +382</option>
+              <option value="+212">MA +212</option>
+              <option value="+258">MZ +258</option>
+              <option value="+95">MM +95</option>
+              <option value="+264">NA +264</option>
+              <option value="+977">NP +977</option>
+              <option value="+31">NL +31</option>
+              <option value="+64">NZ +64</option>
+              <option value="+505">NI +505</option>
+              <option value="+227">NE +227</option>
+              <option value="+234">NG +234</option>
+              <option value="+389">MK +389</option>
+              <option value="+47">NO +47</option>
+              <option value="+968">OM +968</option>
+              <option value="+92">PK +92</option>
+              <option value="+970">PS +970</option>
+              <option value="+507">PA +507</option>
+              <option value="+675">PG +675</option>
+              <option value="+595">PY +595</option>
+              <option value="+51">PE +51</option>
+              <option value="+63">PH +63</option>
+              <option value="+48">PL +48</option>
+              <option value="+974">QA +974</option>
+              <option value="+40">RO +40</option>
+              <option value="+7">RU +7</option>
+              <option value="+250">RW +250</option>
+              <option value="+966">SA +966</option>
+              <option value="+221">SN +221</option>
+              <option value="+381">RS +381</option>
+              <option value="+232">SL +232</option>
+              <option value="+65">SG +65</option>
+              <option value="+421">SK +421</option>
+              <option value="+386">SI +386</option>
+              <option value="+252">SO +252</option>
+              <option value="+27">ZA +27</option>
+              <option value="+82">KR +82</option>
+              <option value="+211">SS +211</option>
+              <option value="+34">ES +34</option>
+              <option value="+94">LK +94</option>
+              <option value="+249">SD +249</option>
+              <option value="+597">SR +597</option>
+              <option value="+46">SE +46</option>
+              <option value="+41">CH +41</option>
+              <option value="+963">SY +963</option>
+              <option value="+886">TW +886</option>
+              <option value="+992">TJ +992</option>
+              <option value="+255">TZ +255</option>
+              <option value="+66">TH +66</option>
+              <option value="+228">TG +228</option>
+              <option value="+1-TT">TT +1</option>
+              <option value="+216">TN +216</option>
+              <option value="+90">TR +90</option>
+              <option value="+993">TM +993</option>
+              <option value="+256">UG +256</option>
+              <option value="+380">UA +380</option>
+              <option value="+971">AE +971</option>
+              <option value="+44">GB +44</option>
+              <option value="+1">US +1</option>
+              <option value="+598">UY +598</option>
+              <option value="+998">UZ +998</option>
+              <option value="+58">VE +58</option>
+              <option value="+84">VN +84</option>
+              <option value="+967">YE +967</option>
+              <option value="+260">ZM +260</option>
+              <option value="+263">ZW +263</option>
+            </select>
+            <input type="tel" id="telefone" name="telefone" placeholder="900 000 000" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="aula">Class of Interest</label>
+          <select id="aula" name="aula" required>
+            <option value="" disabled selected>Choose a class…</option>
+            <option>Boxing</option>
+            <option>Boxmaster</option>
+            <option>HIIT Boxing</option>
+            <option>SHIIT</option>
+            <option>Boxing Kids</option>
+            <option>Boxing Ladies</option>
+            <option>Personal Training</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="mensagem">Message (optional)</label>
+          <textarea id="mensagem" name="mensagem" placeholder="Any questions or schedule preferences?"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Join Us →</button>
+        <p class="form-note">Your data is used only to contact you. We do not share information with third parties.</p>
+      </form>
+
+      <div class="form-success" id="formSuccess">
+        <span class="success-icon">🥊</span>
+        <h3>Welcome to Rounds!</h3>
+        <p>We received your message and will be in touch soon.<br>Round by Round. Never Back Down.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="mini-footer">
+    <div class="mini-footer-logo">
+      <img src="../images/simbolorounds.png" alt="Rounds Academy">
+    </div>
+    <div class="mini-footer-links">
+      <a href="tel:+351211303924">+351 21 130 3924</a>
+      <a href="mailto:rounds.academy@gmail.com">rounds.academy@gmail.com</a>
+      <a href="https://www.instagram.com/rounds_academy" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <a href="index.html" class="footer-site-btn">View Full Site →</a>
+    <p class="mini-footer-legal">&#169; 2026 Rounds Academy &middot; R. Prof. Gomes Teixeira 19D, 1350-264 Lisboa</p>
+  </footer>
+
+  <script>
+    document.getElementById('joinForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const required = this.querySelectorAll('[required]');
+      let valid = true;
+      required.forEach(function(field) {
+        field.classList.remove('field-error');
+        if (!field.value.trim()) {
+          field.classList.add('field-error');
+          field.addEventListener('input', function() { field.classList.remove('field-error'); }, { once: true });
+          valid = false;
+        }
+      });
+      if (!valid) return;
+
+      const btn      = this.querySelector('.btn-submit');
+      const origText = btn.textContent;
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(this.action, {
+          method: 'POST',
+          body: new FormData(this),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          this.reset();
+          btn.style.display = 'none';
+          document.getElementById('formSuccess').style.display = 'block';
+        } else {
+          throw new Error();
+        }
+      } catch {
+        btn.textContent = origText;
+        btn.disabled = false;
+      }
+    });
+  </script>
+
+</body>
+</html>
