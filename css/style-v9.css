@@ -408,7 +408,7 @@ h1,h2,h3,h4 { font-family:var(--f-head); font-weight:700; line-height:1.1; }
 .class-meta       { display:flex; gap:18px; }
 .class-meta-item  {
   font-family:var(--f-head); font-size:13px;
-  letter-spacing:1.5px; text-transform:uppercase; color:var(--gray-700);
+  letter-spacing:1.5px; text-transform:uppercase; color:var(--gray-300);
   display:flex; align-items:center; gap:6px;
 }
 .class-meta-item svg { width:16px; height:16px; color:var(--gold); }
