@@ -961,6 +961,7 @@ a.sched-entry:hover { opacity:.75; }
 }
 @media (max-width:768px) {
   .page-hero-content { text-align:center; }
+  .page-hero-title { font-size: clamp(52px, 16vw, 90px); }
   .nav-links { display:none; }
   .nav-toggle { display:flex; }
   .stats-grid { grid-template-columns:repeat(2,1fr); }
