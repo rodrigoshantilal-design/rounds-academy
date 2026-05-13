@@ -299,7 +299,7 @@ h1,h2,h3,h4 { font-family:var(--f-head); font-weight:700; line-height:1.1; }
 .page-hero-content { position:relative; z-index:1; padding:68px 28px; }
 .page-hero-title {
   font-family:var(--f-disp);
-  font-size:clamp(90px,16vw,180px); letter-spacing:5px; line-height:1;
+  font-size:clamp(90px,12vw,180px); letter-spacing:5px; line-height:1;
   background:linear-gradient(135deg,var(--gold-light),var(--gold),var(--gold-dark));
   -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
   display:block;
