@@ -164,15 +164,15 @@
     videos.forEach(v => videoIO.observe(v));
   }
 
-  /* ── About "Ler mais" toggle ────────────────────────────── */
-  /* ── About "Ler mais" toggle ────────────────────────────── */
+  /* ── About read more toggle ────────────────────────────── */
   const aboutBtn     = document.getElementById('about-more-btn');
   const aboutContent = document.getElementById('about-more-content');
   if (aboutBtn && aboutContent) {
     aboutBtn.addEventListener('click', function () {
       const isOpen = aboutContent.classList.toggle('open');
       aboutBtn.classList.toggle('open', isOpen);
-      aboutBtn.textContent = isOpen ? 'Ler menos' : 'Ler mais';
+      const isEn = document.documentElement.lang === 'en';
+      aboutBtn.textContent = isOpen ? (isEn ? 'Read Less' : 'Ler menos') : (isEn ? 'Read More' : 'Ler mais');
     });
   }
 
