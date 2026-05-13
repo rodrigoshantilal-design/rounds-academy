@@ -969,6 +969,7 @@ a.sched-entry:hover { opacity:.75; }
   .contact-grid  { grid-template-columns:1fr; }
   .class-detail-grid { grid-template-columns:1fr; }
   .class-detail-info { position:static; }
+  .class-hero-visual { aspect-ratio:4/3; }
   .footer-grid   { grid-template-columns:1fr 1fr; gap:28px; }
   .footer-bottom { flex-direction:column; gap:12px; text-align:center; }
   .gallery-grid  { grid-template-columns:repeat(2,1fr); }
