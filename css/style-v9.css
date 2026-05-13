@@ -960,6 +960,7 @@ a.sched-entry:hover { opacity:.75; }
   .class-detail-grid { gap:40px; }
 }
 @media (max-width:768px) {
+  .page-hero-content { text-align:center; }
   .nav-links { display:none; }
   .nav-toggle { display:flex; }
   .stats-grid { grid-template-columns:repeat(2,1fr); }
